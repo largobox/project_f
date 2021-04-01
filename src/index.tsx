@@ -1,7 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './App';
+import 'normalize.css';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 ReactDOM.render(
-  <h1>Maow, maybe some typescript?</h1>,
-  document.getElementById('root')
+	<Router>
+		<App />
+	</Router>,
+	document.getElementById('root')
 );
