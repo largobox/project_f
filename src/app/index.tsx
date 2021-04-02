@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import Menu from './Menu';
+import AmbulatoryCardList from 'page/ambulatory-card/list';
+import ServiceList from 'page/service/list';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
 const Container = styled.div`
@@ -22,14 +24,10 @@ function App() {
 					<Redirect to="/ambulatory-card" />
 				</Route>
 				<Route path="/ambulatory-card">
-					<ContentContainer>
-						<h2>Регистратура</h2>
-					</ContentContainer>
+					<AmbulatoryCardList />
 				</Route>
 				<Route path="/service">
-					<ContentContainer>
-						<h2>Услуги</h2>
-					</ContentContainer>
+					<ServiceList />
 				</Route>
 			</Switch>
 		</Container>

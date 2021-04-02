@@ -1,11 +1,13 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 module.exports = {
     mode: 'development',
     devtool: 'inline-source-map',
     devServer: {
         contentBase: './dist',
+        historyApiFallback: true,
     },
     entry: './src/index.tsx',
     output: {
@@ -16,23 +18,33 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             title: 'PROJECT F',
-            template: 'index.html'
+            template: 'index.html',
         }),
     ],
     module: {
         rules: [
             {
                 test: /\.tsx?$/,
-                use: 'ts-loader',
+                use: [
+                    {
+                        loader: 'ts-loader',
+                        // options: {},
+                    },
+                ],
                 exclude: /node_modules/,
             },
             {
                 test: /\.css$/,
-                use: [{ loader: 'style-loader' }, { loader: 'css-loader' }]
-            }
+                use: [{ loader: 'style-loader' }, { loader: 'css-loader' }],
+            },
         ],
     },
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
+        plugins: [
+            new TsconfigPathsPlugin({
+                configFile: path.resolve(__dirname, 'tsconfig.json'),
+            }),
+        ],
     },
 };

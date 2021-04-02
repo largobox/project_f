@@ -1,5 +1,10 @@
 {
 	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"page/*": ["src/page/*"],
+			"layout/*": ["src/layout/*"]
+		},
 		"outDir": "./dist/",
 		"noImplicitAny": true,
 		"module": "es6",
