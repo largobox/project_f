@@ -17,6 +17,7 @@ const Item = styled.div`
 	height: 40px;
 	line-height: 40px;
 	text-align: center;
+	transition: .15s;
 
 	&:hover {
 		cursor: pointer;

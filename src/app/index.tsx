@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Menu from './Menu';
-import AmbulatoryCardList from 'page/ambulatory-card/list';
+import AmbulatoryCardList from 'page/ambulatory_card/list';
 import ServiceList from 'page/service/list';
 import { Route, Switch, Redirect } from 'react-router-dom';
 

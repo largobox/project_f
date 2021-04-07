@@ -1,10 +1,10 @@
 import React from 'react';
-import Layout from 'layout/Default';
+import Layout from 'layout/default';
 
 function ServiceList() {
 	return (
-		<Layout>
-			<h2>Услуги</h2>
+		<Layout title='Услуги'>
+			<p>Service list</p>		
 		</Layout>
 	)
 }

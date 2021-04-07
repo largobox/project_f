@@ -7,7 +7,10 @@
   "scripts": {
     "s": "webpack serve --open",
     "d": "webpack -w",
-    "b": "webpack"
+    "b": "webpack",
+    "server": "webpack serve --open",
+    "watch": "webpack -w",
+    "build": "webpack"
   },
   "dependencies": {
     "@types/react": "^17.0.3",

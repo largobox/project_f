@@ -2,8 +2,10 @@
 	"compilerOptions": {
 		"baseUrl": ".",
 		"paths": {
-			"page/*": ["src/page/*"],
-			"layout/*": ["src/layout/*"]
+			"page/*": ["src/app/page/*"],
+			"layout/*": ["src/layout/*"],
+			"shared/*": ["src/shared/*"],
+			"core/*": ["src/shared/component/*"]
 		},
 		"outDir": "./dist/",
 		"noImplicitAny": true,
