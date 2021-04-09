@@ -1,18 +1,28 @@
 import React, { PropsWithChildren } from 'react';
 import styled from 'styled-components';
+import Title from './title';
+import Toolbar from './toolbar';
 
-type Props = PropsWithChildren<{ title: string }>;
+type Props = PropsWithChildren<{}>;
 
 const Container = styled.div`
 	background-color: lightblue;
+
+	${Title} {
+		display: inline-block;
+		margin-right: ${props => props.theme.spacing(2)}
+	}
+
+	${Toolbar} {
+		display: inline-block;
+	}
 `;
 
 const DefaultLayout: React.FC<Props> = (props) => {
-	const { children, title } = props;
+	const { children } = props;
 
 	return (
 		<Container>
-			<h2>{title}</h2>
 			{children}
 		</Container>
 	);

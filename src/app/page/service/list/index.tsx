@@ -3,7 +3,7 @@ import Layout from 'layout/default';
 
 function ServiceList() {
 	return (
-		<Layout title='Услуги'>
+		<Layout>
 			<p>Service list</p>		
 		</Layout>
 	)

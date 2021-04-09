@@ -4,27 +4,26 @@ import Layout from 'layout/default'
 import Title from 'layout/default/title'
 import Toolbar from 'layout/default/toolbar'
 import Button from 'core/button'
-import AmbulatoryCardGrid from './grid'
 
 type Props = PropsWithChildren<{}>
 
-const AmbulatoryCardListPage: React.FC<Props> = (props) => {
+const AmbulatoryCardAddPage: React.FC<Props> = (props) => {
 	const history = useHistory()
-	const handleAddClick = () => history.push('/ambulatory-card/add')
+	const handleSaveClick = () => console.log('Save clicked')
 
 	return (
 		<Layout>
-			<Title>Регистратура</Title>
+			<Title>Добавить карту</Title>
 			<Toolbar>
 				<Button
-					onClick={handleAddClick}
+					onClick={handleSaveClick}
 				>
-					Добавить
+					Сохранить
 				</Button>
 			</Toolbar>
-			<AmbulatoryCardGrid />
+			<h2>Add form</h2>
 		</Layout>
 	)
 }
 
-export default AmbulatoryCardListPage
+export default AmbulatoryCardAddPage

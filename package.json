@@ -16,15 +16,16 @@
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.3",
     "@types/react-router-dom": "^5.1.7",
-    "@types/styled-components": "^5.1.9",
     "@types/webpack": "^5.0.0",
     "normalize.css": "^8.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-hook-form": "^7.0.4",
     "react-router-dom": "^5.2.0",
     "styled-components": "^5.2.3"
   },
   "devDependencies": {
+    "@types/styled-components": "^5.1.9",
     "css-loader": "^5.2.0",
     "html-webpack-plugin": "^5.3.1",
     "prettier": "^2.2.1",

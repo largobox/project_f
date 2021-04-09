@@ -5,7 +5,8 @@
 			"page/*": ["src/app/page/*"],
 			"layout/*": ["src/layout/*"],
 			"shared/*": ["src/shared/*"],
-			"core/*": ["src/shared/component/*"]
+			"core/*": ["src/shared/component/*"],
+			"common/*": ["src/app/component/*"]
 		},
 		"outDir": "./dist/",
 		"noImplicitAny": true,
