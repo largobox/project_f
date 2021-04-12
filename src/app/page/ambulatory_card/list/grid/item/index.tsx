@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from 'react';
-import { AmulatoryCardT }  from 'shared/type'
+import { AmbulatoryCardT }  from 'shared/type'
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -15,7 +15,7 @@ const Container = styled.div`
 	}
 `;
 
-type Props = PropsWithChildren<{data: AmulatoryCardT}>
+type Props = PropsWithChildren<{data: AmbulatoryCardT}>
 
 const AmbulatoryCardItem: React.FC<Props> = (props) => {
 	const { data } = props;

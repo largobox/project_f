@@ -4,6 +4,7 @@ import Layout from 'layout/default'
 import Title from 'layout/default/title'
 import Toolbar from 'layout/default/toolbar'
 import Button from 'core/button'
+import Form from './form'
 
 type Props = PropsWithChildren<{}>
 
@@ -13,7 +14,7 @@ const AmbulatoryCardAddPage: React.FC<Props> = (props) => {
 
 	return (
 		<Layout>
-			<Title>Добавить карту</Title>
+			<Title>Добавить карту пациента</Title>
 			<Toolbar>
 				<Button
 					onClick={handleSaveClick}
@@ -21,7 +22,7 @@ const AmbulatoryCardAddPage: React.FC<Props> = (props) => {
 					Сохранить
 				</Button>
 			</Toolbar>
-			<h2>Add form</h2>
+			<Form />
 		</Layout>
 	)
 }

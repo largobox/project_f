@@ -1,4 +1,4 @@
-export type AmulatoryCardT = {
+export type AmbulatoryCardT = {
 	fullName: string
 	updatedAt: string
 }
