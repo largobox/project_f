@@ -1,16 +1,14 @@
 import React, { PropsWithChildren } from 'react'
 import styled from 'styled-components'
 
-const Container = styled.div`
-	background-color: green;
-`
+const Container = styled.div``
 
-type Props = PropsWithChildren<{}>
+type RowPropsT = PropsWithChildren<{ className?: string }>
 
-const Row: React.FC<Props> = (props) => {
-	const { children } = props
+const Row = (props: RowPropsT) => {
+	const { className, children } = props
 
-	return <Container>{children}</Container>
+	return <Container className={className}>{children}</Container>
 }
 
-export default Row
+export default styled(Row)``

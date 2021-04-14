@@ -1,36 +1,40 @@
 import React from 'react'
-import styled from 'styled-components';
+import styled from 'styled-components'
 import Input from 'core/input'
+import { useFormContext } from 'react-hook-form'
 
-type Props = {
+export type FieldPropsT = {
 	name: string
 	label: string
 	type?: string
-}
-
-type LabelProps = {
-	htmlFor: string
+	placeholder?: string
+	onChange?: (value: any) => void
 }
 
 const Container = styled.div`
 	display: flex;
-    flex-direction: column;
-`;
+	flex-direction: column;
+`
 
-const Label = styled.label<LabelProps>`
-`;
+const ErrorMessage = styled.span`
+	color: ${({ theme }) => theme.palette.error};
+`
 
-const Field: React.FC<Props> = ({type = 'string', name, label}) => {
+const Label = styled.label``
+
+const Field = (props: FieldPropsT) => {
+	const { type = 'string', name, label, placeholder, onChange } = props
+
+	const formContext = useFormContext()
+	const errors = formContext?.formState?.errors
+
 	return (
 		<Container>
-			<Label
-				htmlFor={name}
-			>
-				{label}
-			</Label>
-			<Input
-				name={name}
-			/>
+			<Label htmlFor={name}>{label}</Label>
+			<Input placeholder={placeholder} name={name} onChange={onChange} />
+			{formContext && errors[name] && (
+				<ErrorMessage>{errors[name].message}</ErrorMessage>
+			)}
 		</Container>
 	)
 }

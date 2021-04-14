@@ -1,34 +1,54 @@
 import React, { PropsWithChildren } from 'react'
-import Form, { Field } from 'core/form'
-import Button from 'core/button'
-import Row from 'core/row'
-import Col from 'core/column'
+import * as yup from 'yup'
+import { Form, Button, Row, Field, Column as Col, Input } from 'core'
 
-type Props = PropsWithChildren<{}>
+type PropsT = PropsWithChildren<{}>
 
-const AmbulatoryCardAddPage: React.FC<Props> = (props) => {
+const schema = yup.object().shape({
+	name: yup.string().required(),
+	surname: yup.string().required(),
+	age: yup.string().required(),
+})
+
+const AmbulatoryCardAddPage: React.FC<PropsT> = (props) => {
+	const handleSumbit = (data: any) => {
+		console.log('SUBMIT FORM DATA: ', data)
+	}
+
 	return (
-		<Form>
+		<Form
+			onSubmit={handleSumbit}
+			initialValues={{
+				name: 'Maow',
+				surname: '',
+				age: '',
+			}}
+			schema={schema}
+		>
 			<Row>
-				<Col xs={6}>
-					<Field
-						name='name'
-						label='имя'
-					/>
+				<Col xs={12}>
+					<Field name='name' label='имя' />
 				</Col>
-				<Col xs={6}>
+			</Row>
+			<Row>
+				<Col xs={8}>
 					<Field
 						name='surname'
+						placeholder='Введите фамилию'
 						label='фамилия'
 					/>
 				</Col>
 			</Row>
 			<Row>
-				<Button
-					type='submit'
-				>
-					Send
-				</Button>
+				<Col xs={6}>
+					<Field name='age' label='возраст' />
+				</Col>
+				<Col xs={6}>
+					<Field name='createdAt' label='дата создания' />
+				</Col>
+			</Row>
+			<Row>
+				<Button type='submit'>Send</Button>
 			</Row>
 		</Form>
 	)

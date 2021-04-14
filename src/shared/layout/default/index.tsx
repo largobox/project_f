@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Title from './title';
 import Toolbar from './toolbar';
 
-type Props = PropsWithChildren<{}>;
+type PropsT = PropsWithChildren<{}>;
 
 const Container = styled.div`
 	background-color: lightblue;
@@ -18,7 +18,7 @@ const Container = styled.div`
 	}
 `;
 
-const DefaultLayout: React.FC<Props> = (props) => {
+const DefaultLayout = (props: PropsT) => {
 	const { children } = props;
 
 	return (

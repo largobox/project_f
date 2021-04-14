@@ -1,21 +1,31 @@
 import React, { PropsWithChildren } from 'react'
 import styled from 'styled-components'
 
-const Container = styled.div`
-	background-color: lightgreen;
-`
-
 type Props = PropsWithChildren<{
 	xs: number
+	className?: string
 }>
 
-const Column: React.FC<Props> = (props) => {
+const Container = styled.div<Props>`
+	display: inline-block;
+	width: ${({ xs }) => xs / 12 * 100}%;
+`
+
+const Column = (props: Props) => {
 	const {
+		className,
 		children,
 		xs
 	} = props
 
-	return <Container>{children}</Container>
+	return (
+		<Container
+			xs={xs}
+			className={className}
+		>
+			{children}
+		</Container>
+	)
 }
 
-export default Column
+export default styled(Column)``

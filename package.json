@@ -13,6 +13,8 @@
     "build": "webpack"
   },
   "dependencies": {
+    "@hookform/error-message": "^2.0.0",
+    "@hookform/resolvers": "^2.3.0",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.3",
     "@types/react-router-dom": "^5.1.7",
@@ -23,7 +25,8 @@
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.0.4",
     "react-router-dom": "^5.2.0",
-    "styled-components": "^5.2.3"
+    "styled-components": "^5.2.3",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "css-loader": "^5.2.0",

@@ -3,11 +3,13 @@
 		"baseUrl": ".",
 		"paths": {
 			"page/*": ["src/app/page/*"],
-			"layout/*": ["src/shared/component/layout/*"],
+			"layout/*": ["src/shared/layout/*"],
 			"shared/*": ["src/shared/*"],
 			"core/*": ["src/shared/component/*"],
+			"core": ["src/shared/component"],
 			"common/*": ["src/app/component/*"],
-			"error": ["src/shared/error"]
+			"error": ["src/shared/error"],
+			"locale/*": ["src/shared/locale/*"]
 		},
 		"outDir": "./dist/",
 		"noImplicitAny": true,

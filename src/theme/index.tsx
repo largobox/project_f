@@ -1,4 +1,6 @@
-const theme = {
+import { DefaultTheme } from 'styled-components';
+
+const theme: DefaultTheme = {
 	palette: {
 		primary: {
 			main: '',
@@ -10,8 +12,9 @@ const theme = {
 			main: '',
 		},
 		paper: '#ffffff',
+		error: '#f13838'
 	},
-	spacing: (value: number): string => {
+	spacing: (value) => {
 		return `${value * 8}px`
 	},
 }
