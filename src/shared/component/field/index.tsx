@@ -1,14 +1,11 @@
-import React from 'react'
+import React  from 'react'
 import styled from 'styled-components'
 import Input from 'core/input'
 import { useFormContext } from 'react-hook-form'
 
 export type FieldPropsT = {
-	name: string
 	label: string
-	type?: string
-	placeholder?: string
-	onChange?: (value: any) => void
+	children: React.ReactElement
 }
 
 const Container = styled.div`
@@ -23,17 +20,18 @@ const ErrorMessage = styled.span`
 const Label = styled.label``
 
 const Field = (props: FieldPropsT) => {
-	const { type = 'string', name, label, placeholder, onChange } = props
+	const { label, children } = props
+	const fieldName = children.props.name
 
 	const formContext = useFormContext()
 	const errors = formContext?.formState?.errors
 
 	return (
 		<Container>
-			<Label htmlFor={name}>{label}</Label>
-			<Input placeholder={placeholder} name={name} onChange={onChange} />
-			{formContext && errors[name] && (
-				<ErrorMessage>{errors[name].message}</ErrorMessage>
+			<Label htmlFor={fieldName}>{label}</Label>
+			{children}
+			{formContext && errors[fieldName] && (
+				<ErrorMessage>{errors[fieldName].message}</ErrorMessage>
 			)}
 		</Container>
 	)

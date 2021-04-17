@@ -17,13 +17,12 @@ const Container = styled.input`
 
 type InputPropsT = {
 	name: string
-	type?: string
 	placeholder?: string
 	onChange?: (value: string) => void
 }
 
 const Input = (props: InputPropsT) => {
-	const { type = 'string', name, placeholder, onChange } = props
+	const { name, placeholder, onChange } = props
 
 	const formContext = useFormContext()
 
@@ -34,7 +33,6 @@ const Input = (props: InputPropsT) => {
 	return (
 		<Container
 			{...formContext?.register(name)}
-			// value={value}
 			onChange={handleChange}
 			autoComplete='off'
 			placeholder={placeholder}
