@@ -4,6 +4,7 @@ import Menu from 'common/navigation';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import AmbulatoryCardPages from 'page/ambulatory_card';
 import ServicePages from 'page/service';
+import './connection';
 
 const Container = styled.div`
 	background-color: pink;

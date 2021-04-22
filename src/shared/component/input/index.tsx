@@ -1,13 +1,17 @@
-import React, { ChangeEvent } from 'react'
+import React, { ChangeEvent, useState } from 'react'
 import styled from 'styled-components'
-import { useFormContext } from 'react-hook-form'
 
 const Container = styled.input`
-	padding-top: ${({ theme }) => theme.spacing(0.5)};
-	padding-bottom: ${({ theme }) => theme.spacing(0.5)};
+	padding-top: ${({ theme }) => theme.spacing(1)};
+	padding-bottom: ${({ theme }) => theme.spacing(1)};
 	padding-left: ${({ theme }) => theme.spacing(2)};
 	padding-right: ${({ theme }) => theme.spacing(2)};
-	background-color: rgba(255, 255, 255, 0.5);
+	background-color: ${({ theme }) => theme.palette.paper};
+
+	&::placeholder {
+		color: ${({ theme }) => theme.palette.default};
+	}
+
 	border: none;
 
 	&:focus {
@@ -16,26 +20,27 @@ const Container = styled.input`
 `
 
 type InputPropsT = {
-	name: string
+	name?: string
 	placeholder?: string
 	onChange?: (value: string) => void
+	value?: string | number
 }
 
 const Input = (props: InputPropsT) => {
-	const { name, placeholder, onChange } = props
-
-	const formContext = useFormContext()
+	const { name, placeholder, onChange, value: initialValue } = props
+	const [value, setValue] = useState(initialValue)
 
 	const handleChange = (ev: ChangeEvent<HTMLInputElement>) => {
+		setValue(ev.target.value)
 		onChange && onChange(ev.target.value)
 	}
 
 	return (
 		<Container
-			{...formContext?.register(name)}
 			onChange={handleChange}
 			autoComplete='off'
 			placeholder={placeholder}
+			value={value}
 		/>
 	)
 }

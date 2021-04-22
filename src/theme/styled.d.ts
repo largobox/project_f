@@ -11,10 +11,15 @@ declare module 'styled-components' {
 			},
 			default: {
 				main: string
+				dark: string
+				light: string
 			},
 			paper: string,
 			error: string
 		}
-		spacing: (value: number) => string
+		spacing: (value: number) => string,
+		zIndex: {
+			dropdown: number
+		}
 	}
 }

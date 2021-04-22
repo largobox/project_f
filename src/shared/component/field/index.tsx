@@ -1,11 +1,13 @@
-import React  from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import Input from 'core/input'
-import { useFormContext } from 'react-hook-form'
+import Select from 'core/select'
+import { useFormContext, Controller } from 'react-hook-form'
 
 export type FieldPropsT = {
 	label: string
-	children: React.ReactElement
+	name: string
+	children: React.ReactElement | React.ReactElement[]
 }
 
 const Container = styled.div`
@@ -20,18 +22,44 @@ const ErrorMessage = styled.span`
 const Label = styled.label``
 
 const Field = (props: FieldPropsT) => {
-	const { label, children } = props
-	const fieldName = children.props.name
+	const { label, children, name } = props
 
 	const formContext = useFormContext()
 	const errors = formContext?.formState?.errors
 
 	return (
 		<Container>
-			<Label htmlFor={fieldName}>{label}</Label>
-			{children}
-			{formContext && errors[fieldName] && (
-				<ErrorMessage>{errors[fieldName].message}</ErrorMessage>
+			<Label htmlFor={name}>{label}</Label>
+
+			{React.Children.map(children, (child) => {
+				const isInput = child.type === Input
+				const isSelect = child.type === Select
+				const isControlledComponent = isInput || isSelect
+
+				if (isControlledComponent && formContext) {
+					return (
+						<Controller
+							name={name}
+							render={({ field }) => {
+								return (
+									React.cloneElement(
+										child,
+										{
+											onChange: field.onChange,
+											value: field.value,
+										}
+									)
+								)
+							}}
+						/>
+					)
+				}
+
+				return React.cloneElement(child)
+			})}
+
+			{formContext && errors[name] && (
+				<ErrorMessage>{errors[name].message}</ErrorMessage>
 			)}
 		</Container>
 	)

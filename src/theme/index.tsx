@@ -9,7 +9,9 @@ const theme: DefaultTheme = {
 			main: '',
 		},
 		default: {
-			main: '',
+			main: '#969284',
+			dark: '#676459',
+			light: '#d8d3c3'
 		},
 		paper: '#ffffff',
 		error: '#f13838'
@@ -17,6 +19,9 @@ const theme: DefaultTheme = {
 	spacing: (value) => {
 		return `${value * 8}px`
 	},
+	zIndex: {
+		dropdown: 1
+	}
 }
 
 export default theme
