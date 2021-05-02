@@ -1,14 +1,19 @@
-import React, { PropsWithChildren } from 'react'
+import React, { PropsWithChildren, useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import { atom, selector, useRecoilState, useRecoilValue } from 'recoil'
+
 import Layout from 'layout/default'
 import Title from 'layout/default/title'
 import Toolbar from 'layout/default/toolbar'
 import Button from 'core/button'
 import AmbulatoryCardGrid from './grid'
+import { findAmbulatoryCard } from 'api/ambulatory_card'
+import { ambulatoryCardGridItemsSelector } from 'page/ambulatory_card'
 
-type Props = PropsWithChildren<{}>
+type PropsType = PropsWithChildren<{}>
 
-const AmbulatoryCardListPage: React.FC<Props> = (props) => {
+const AmbulatoryCardListPage: React.FC<PropsType> = (props) => {
+	const items = useRecoilValue(ambulatoryCardGridItemsSelector)
 	const history = useHistory()
 	const handleAddClick = () => history.push('/ambulatory-card/add')
 
@@ -16,13 +21,9 @@ const AmbulatoryCardListPage: React.FC<Props> = (props) => {
 		<Layout>
 			<Title>Регистратура</Title>
 			<Toolbar>
-				<Button
-					onClick={handleAddClick}
-				>
-					Добавить
-				</Button>
+				<Button onClick={handleAddClick}>Добавить</Button>
 			</Toolbar>
-			<AmbulatoryCardGrid />
+			<AmbulatoryCardGrid data={items} />
 		</Layout>
 	)
 }

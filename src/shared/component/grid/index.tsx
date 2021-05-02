@@ -4,17 +4,17 @@ import styled from 'styled-components'
 const Container = styled.div``
 
 type Props = PropsWithChildren<{
-	initialData: {id: string}[]
+	data: {id: string}[]
 	headers: {name: string, label: string, size: number}[]
 	Item: React.FC<{ data: {} }>
 }>
 
 const Grid: React.FC<Props> = (props) => {
-	const { initialData, Item } = props
+	const { data, Item } = props
 
 	return (
 		<Container>
-			{initialData.map((item) => (
+			{data.map((item) => (
 				<Item key={item.id} data={item} />
 			))}
 		</Container>

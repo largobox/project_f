@@ -27,6 +27,7 @@
     "react-hook-form": "^7.0.4",
     "react-icons": "^4.2.0",
     "react-router-dom": "^5.2.0",
+    "recoil": "^0.2.0",
     "styled-components": "^5.2.3",
     "yup": "^0.32.9"
   },

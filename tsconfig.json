@@ -8,8 +8,11 @@
 			"core/*": ["src/shared/component/*"],
 			"core": ["src/shared/component"],
 			"common/*": ["src/app/component/*"],
-			"error": ["src/shared/error"],
-			"locale/*": ["src/shared/locale/*"]
+			"error/*": ["src/shared/error/*"],
+			"locale/*": ["src/shared/locale/*"],
+			"api/*": ["src/api/*"],
+			"type/*": ["src/shared/type/*"],
+			"type": ["src/shared/type"]
 		},
 		"outDir": "./dist/",
 		"noImplicitAny": true,

@@ -1,4 +1,8 @@
 export type AmbulatoryCardT = {
-	fullName: string
-	updatedAt: string
+	id: string
+	firstName: string
+}
+
+export type AmbulatoryCardInputT = {
+	firstName: string
 }

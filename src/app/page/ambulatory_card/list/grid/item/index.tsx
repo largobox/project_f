@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from 'react';
-import { AmbulatoryCardT }  from 'shared/type'
+import { AmbulatoryCardT }  from 'type'
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -22,8 +22,7 @@ const AmbulatoryCardItem: React.FC<Props> = (props) => {
 
 	return (
 		<Container>
-			<span>{data.fullName}</span>
-			<span> ({data.updatedAt})</span>
+			<span>{data.firstName}</span>
 		</Container>
 	)
 }

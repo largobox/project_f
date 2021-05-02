@@ -1,31 +1,36 @@
 import React, { PropsWithChildren } from 'react'
 import * as yup from 'yup'
 import { Form, Button, Row, Field, Column as Col, Input, Select } from 'core'
+import { createAmbulatoryCard } from 'api/ambulatory_card'
+import { useHistory } from 'react-router-dom';
 
 type PropsT = PropsWithChildren<{}>
 
 const schema = yup.object().shape({
-	name: yup.string().required(),
-	surname: yup.string().required(),
+	firstName: yup.string().required(),
 })
 
 const AmbulatoryCardAddPage: React.FC<PropsT> = (props) => {
-	const handleSumbit = (data: any) => {
-		console.log('SUBMIT FORM DATA: ', data)
+	const history = useHistory()
+
+	const handleSumbit = async (data: any) => {
+		const response = await createAmbulatoryCard(data)
+
+		history.push('/ambulatory-card')
 	}
 
 	return (
 		<Form
 			onSubmit={handleSumbit}
 			initialValues={{
-				name: 'Some name',
+				firstName: 'Some name',
 				surname: '',
 			}}
 			schema={schema}
 		>
 			<Row>
 				<Col xs={12}>
-					<Field label='имя' name='name'>
+					<Field label='имя' name='firstName'>
 						<Input placeholder='введите имя' />
 					</Field>
 				</Col>
