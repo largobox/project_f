@@ -1,4 +1,5 @@
 import React, { PropsWithChildren } from 'react'
+import { useHistory } from 'react-router-dom'
 import { AmbulatoryCardT } from 'type'
 import styled from 'styled-components'
 import { EditIcon, RemoveIcon } from 'icons'
@@ -25,6 +26,15 @@ type Props = PropsWithChildren<{ data: AmbulatoryCardT }>
 
 const AmbulatoryCardItem: React.FC<Props> = (props) => {
 	const { data } = props
+	const history = useHistory()
+
+	const handleEditClick = (id: string) => () => {
+		history.push(`/ambulatory-card/${id}/edit`)
+	}
+
+	const handleRemoveClick = () => {
+		alert('Remove clicked')
+	}
 
 	return (
 		<Container>
@@ -36,10 +46,10 @@ const AmbulatoryCardItem: React.FC<Props> = (props) => {
 				<Column xs={6}>
 					<ControlsContainer>
 						<ButtonGroup>
-							<Button color='secondary'>
+							<Button color='secondary' onClick={handleEditClick(data.id)}>
 								<EditIcon />
 							</Button>
-							<Button color='secondary'>
+							<Button color='secondary' onClick={handleRemoveClick}>
 								<RemoveIcon />
 							</Button>
 						</ButtonGroup>

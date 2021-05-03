@@ -2,8 +2,8 @@ import React, { Suspense } from 'react'
 import styled from 'styled-components'
 import Menu from 'common/navigation'
 import { Route, Switch, Redirect } from 'react-router-dom'
-import AmbulatoryCardPages from 'page/ambulatory_card'
-import ServicePages from 'page/service'
+import AmbulatoryCardModule from 'module/ambulatory_card'
+import ServiceModule from 'module/service'
 import Preloader from 'core/preloader'
 
 const Container = styled.div`
@@ -26,10 +26,10 @@ function App() {
 				<Suspense fallback={<Preloader />}>
 					<Switch>
 						<Route path='/ambulatory-card'>
-							<AmbulatoryCardPages />
+							<AmbulatoryCardModule />
 						</Route>
 						<Route path='/service'>
-							<ServicePages />
+							<ServiceModule />
 						</Route>
 						<Route exact path='/'>
 							<Redirect to='/ambulatory-card' />

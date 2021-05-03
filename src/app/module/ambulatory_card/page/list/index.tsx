@@ -1,13 +1,13 @@
 import React, { PropsWithChildren, useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import { atom, selector, useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilValue } from 'recoil'
 
 import Layout from 'layout/default'
 import Title from 'layout/default/title'
 import Toolbar from 'layout/default/toolbar'
 import Button from 'core/button'
-import AmbulatoryCardGrid from './grid'
-import { ambulatoryCardGridItemsSelector } from 'page/ambulatory_card'
+import AmbulatoryCardGrid from 'module/ambulatory_card/component/grid/default'
+import { ambulatoryCardGridItemsSelector } from 'module/ambulatory_card'
 
 type PropsType = PropsWithChildren<{}>
 

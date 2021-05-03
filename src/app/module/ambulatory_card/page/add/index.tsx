@@ -6,7 +6,7 @@ import Title from 'layout/default/title'
 import Toolbar from 'layout/default/toolbar'
 import FormLayout from 'layout/form'
 import Button from 'core/button'
-import Form from './form'
+import Form from 'module/ambulatory_card/component/form/default'
 
 type Props = PropsWithChildren<{}>
 
@@ -30,7 +30,7 @@ const AmbulatoryCardAddPage: React.FC<Props> = (props) => {
 			</Toolbar>
 			<FormContainer>
 				<FormLayout>
-					<Form />
+					<Form initialData={{}} />
 				</FormLayout>
 			</FormContainer>
 		</Layout>

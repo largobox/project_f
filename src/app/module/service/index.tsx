@@ -1,15 +1,15 @@
 import React from 'react'
-import ServiceList from 'page/service/list'
+import ServiceListPage from 'module/service/list'
 import { Route, Switch } from 'react-router-dom'
 
-function ServicePages() {
+function ServiceModule() {
 	return (
 		<Switch>
 			<Route path='/service' exact>
-				<ServiceList />
+				<ServiceListPage />
 			</Route>
 		</Switch>
 	)
 }
 
-export default ServicePages
+export default ServiceModule

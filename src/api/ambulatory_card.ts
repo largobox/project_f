@@ -16,9 +16,21 @@ export const createAmbulatoryCard = (data: AmbulatoryCardInputT) => {
 export const findAmbulatoryCard = () => {
 	return new Promise<AmbulatoryCardT[]>(async (resolve, reject) => {
 		const db = await PromiseDB
-		const transaction = db.transaction('ambulatoryCards', 'readwrite')
+		const transaction = db.transaction('ambulatoryCards')
 		const ambulatoryCards = transaction.objectStore('ambulatoryCards')
 		const request = ambulatoryCards.getAll()
+
+		request.onsuccess = () => resolve(request.result)
+		request.onerror = () => reject(null)
+	})
+}
+
+export const findOneAmbulatoryCard = (id: string) => {
+	return new Promise<AmbulatoryCardT[]>(async (resolve, reject) => {
+		const db = await PromiseDB
+		const transaction = db.transaction('ambulatoryCards')
+		const ambulatoryCards = transaction.objectStore('ambulatoryCards')
+		const request = ambulatoryCards.get(Number(id))
 
 		request.onsuccess = () => resolve(request.result)
 		request.onerror = () => reject(null)

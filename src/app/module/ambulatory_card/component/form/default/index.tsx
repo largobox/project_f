@@ -6,16 +6,19 @@ import { useHistory } from 'react-router-dom'
 import {
 	ambulatoryCardGridRequestIDAtom,
 	useRefreshAmbulatoryCardGrid,
-} from 'page/ambulatory_card'
+} from 'module/ambulatory_card'
 import { useRecoilState } from 'recoil'
 
-type PropsT = PropsWithChildren<{}>
+type PropsT = PropsWithChildren<{
+	initialData: object
+}>
 
 const schema = yup.object().shape({
 	firstName: yup.string().required(),
 })
 
 const AmbulatoryCardAddPage: React.FC<PropsT> = (props) => {
+	const { initialData } = props
 	const history = useHistory()
 	const refreshAmbulatoryCardGrid = useRefreshAmbulatoryCardGrid()
 
@@ -30,10 +33,7 @@ const AmbulatoryCardAddPage: React.FC<PropsT> = (props) => {
 	return (
 		<Form
 			onSubmit={handleSumbit}
-			initialValues={{
-				firstName: 'Some name',
-				surname: '',
-			}}
+			initialValues={initialData}
 			schema={schema}
 		>
 			<Row>

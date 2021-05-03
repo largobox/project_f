@@ -2,7 +2,7 @@
 	"compilerOptions": {
 		"baseUrl": ".",
 		"paths": {
-			"page/*": ["src/app/page/*"],
+			"module/*": ["src/app/module/*"],
 			"layout/*": ["src/shared/layout/*"],
 			"shared/*": ["src/shared/*"],
 			"core/*": ["src/shared/component/*"],
