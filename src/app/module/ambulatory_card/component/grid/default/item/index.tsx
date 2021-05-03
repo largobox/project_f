@@ -3,7 +3,9 @@ import { useHistory } from 'react-router-dom'
 import { AmbulatoryCardT } from 'type'
 import styled from 'styled-components'
 import { EditIcon, RemoveIcon } from 'icons'
-import { Row, Column, Button, ButtonGroup } from 'core'
+import { Row, Column as Col, Button, ButtonGroup } from 'core'
+import { deleteAmbulatoryCard } from 'api/ambulatory_card'
+import { useRefreshAmbulatoryCardGrid } from 'module/ambulatory_card'
 
 const Container = styled.div`
 	padding: ${({ theme }) => theme.spacing(1)};
@@ -25,36 +27,39 @@ const ControlsContainer = styled.div`
 type Props = PropsWithChildren<{ data: AmbulatoryCardT }>
 
 const AmbulatoryCardItem: React.FC<Props> = (props) => {
-	const { data } = props
+	const { data: { id, firstName } } = props
 	const history = useHistory()
+	const refreshAmbulatoryCardGrid = useRefreshAmbulatoryCardGrid()
 
 	const handleEditClick = (id: string) => () => {
 		history.push(`/ambulatory-card/${id}/edit`)
 	}
 
-	const handleRemoveClick = () => {
-		alert('Remove clicked')
+	const handleRemoveClick = (id: string) => async () => {
+		await deleteAmbulatoryCard(id)
+
+		refreshAmbulatoryCardGrid()
 	}
 
 	return (
 		<Container>
 			<Row>
-				<Column xs={6}>
-					<span>{data.firstName}</span>
-				</Column>
+				<Col xs={6}>
+					<span>{firstName}</span>
+				</Col>
 
-				<Column xs={6}>
+				<Col xs={6}>
 					<ControlsContainer>
 						<ButtonGroup>
-							<Button color='secondary' onClick={handleEditClick(data.id)}>
+							<Button color='secondary' onClick={handleEditClick(id)}>
 								<EditIcon />
 							</Button>
-							<Button color='secondary' onClick={handleRemoveClick}>
+							<Button color='secondary' onClick={handleRemoveClick(id)}>
 								<RemoveIcon />
 							</Button>
 						</ButtonGroup>
 					</ControlsContainer>
-				</Column>
+				</Col>
 			</Row>
 		</Container>
 	)

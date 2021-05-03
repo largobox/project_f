@@ -11,9 +11,13 @@ type Props = PropsWithChildren<{
 
 const Grid: React.FC<Props> = (props) => {
 	const { data, Item } = props
+	const isEmpty = data.length === 0
 
 	return (
 		<Container>
+			{isEmpty && (
+				<span>Таблица пуста</span>
+			)}
 			{data.map((item) => (
 				<Item key={item.id} data={item} />
 			))}

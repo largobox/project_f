@@ -52,7 +52,7 @@ export const findOneAmbulatoryCard = (id: string) => {
 export const deleteAmbulatoryCard = (id: string) => {
 	return new Promise<AmbulatoryCardT[]>(async (resolve, reject) => {
 		const db = await PromiseDB
-		const transaction = db.transaction('ambulatoryCards')
+		const transaction = db.transaction('ambulatoryCards', 'readwrite')
 		const ambulatoryCards = transaction.objectStore('ambulatoryCards')
 		const request = ambulatoryCards.delete(Number(id))
 

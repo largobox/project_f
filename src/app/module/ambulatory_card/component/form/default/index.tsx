@@ -1,6 +1,15 @@
 import React, { PropsWithChildren } from 'react'
 import * as yup from 'yup'
-import { Form, Button, Row, Field, Column as Col, Input, Select } from 'core'
+import {
+	Form,
+	Button,
+	Row,
+	Field,
+	Column as Col,
+	Input,
+	Select,
+	Typography,
+} from 'core'
 import { useHistory } from 'react-router-dom'
 import { AmbulatoryCardInputT } from 'type'
 
@@ -18,11 +27,7 @@ const AmbulatoryCardAddPage: React.FC<PropsT> = (props) => {
 	const history = useHistory()
 
 	return (
-		<Form
-			onSubmit={onSubmit}
-			initialValues={initialData}
-			schema={schema}
-		>
+		<Form onSubmit={onSubmit} initialValues={initialData} schema={schema}>
 			<Row>
 				<Col xs={12}>
 					<Field label='имя' name='firstName'>
@@ -62,7 +67,9 @@ const AmbulatoryCardAddPage: React.FC<PropsT> = (props) => {
 				</Col>
 			</Row>
 			<Row>
-				<Button type='submit'>Отправить</Button>
+				<Button type='submit'>
+					<Typography>Отправить</Typography>
+				</Button>
 			</Row>
 		</Form>
 	)

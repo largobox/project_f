@@ -7,7 +7,7 @@ import Layout from 'layout/default'
 import Title from 'layout/default/title'
 import Toolbar from 'layout/default/toolbar'
 import FormLayout from 'layout/form'
-import Button from 'core/button'
+import { Button, Typography } from 'core'
 import Form from 'module/ambulatory_card/component/form/default'
 import { ambulatoryCardEditFormDataSelector } from 'module/ambulatory_card'
 import { AmbulatoryCardInputT } from 'type'
@@ -39,7 +39,9 @@ const AmbulatoryCardAddPage: React.FC<Props> = (props) => {
 		<Layout>
 			<Title>Редактировать карту пациента</Title>
 			<Toolbar>
-				<Button onClick={handleSaveClick}>Сохранить</Button>
+				<Button onClick={handleSaveClick}>
+					<Typography>Сохранить</Typography>				
+				</Button>
 			</Toolbar>
 			<FormContainer>
 				<FormLayout>

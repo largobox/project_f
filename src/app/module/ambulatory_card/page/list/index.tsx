@@ -5,7 +5,7 @@ import { useRecoilValue } from 'recoil'
 import Layout from 'layout/default'
 import Title from 'layout/default/title'
 import Toolbar from 'layout/default/toolbar'
-import Button from 'core/button'
+import { Button, Typography } from 'core'
 import AmbulatoryCardGrid from 'module/ambulatory_card/component/grid/default'
 import { ambulatoryCardGridItemsSelector } from 'module/ambulatory_card'
 
@@ -20,7 +20,9 @@ const AmbulatoryCardListPage: React.FC<PropsType> = (props) => {
 		<Layout>
 			<Title>Регистратура</Title>
 			<Toolbar>
-				<Button onClick={handleAddClick}>Добавить</Button>
+				<Button onClick={handleAddClick}>
+					<Typography>Добавить</Typography>
+				</Button>
 			</Toolbar>
 			<AmbulatoryCardGrid data={items} />
 		</Layout>
