@@ -1,14 +1,18 @@
 import React, { PropsWithChildren } from 'react'
 import styled from 'styled-components'
 import { useHistory, useParams } from 'react-router-dom'
+import { useRecoilValue } from 'recoil'
+
 import Layout from 'layout/default'
 import Title from 'layout/default/title'
 import Toolbar from 'layout/default/toolbar'
 import FormLayout from 'layout/form'
 import Button from 'core/button'
 import Form from 'module/ambulatory_card/component/form/default'
-import { useRecoilValue } from 'recoil'
 import { ambulatoryCardEditFormDataSelector } from 'module/ambulatory_card'
+import { AmbulatoryCardInputT } from 'type'
+import { useRefreshAmbulatoryCardGrid } from 'module/ambulatory_card'
+import { updateAmbulatoryCard } from 'api/ambulatory_card'
 
 type Props = PropsWithChildren<{}>
 
@@ -21,6 +25,15 @@ const AmbulatoryCardAddPage: React.FC<Props> = (props) => {
 	const { id } = useParams<{id: string}>()
 	const handleSaveClick = () => console.log('Save clicked')
 	const initialData = useRecoilValue(ambulatoryCardEditFormDataSelector(id))
+	const refreshAmbulatoryCardGrid = useRefreshAmbulatoryCardGrid()
+
+	const handleSumbit = async (data: AmbulatoryCardInputT) => {
+		await updateAmbulatoryCard(data)
+
+		refreshAmbulatoryCardGrid()
+
+		history.push('/ambulatory-card')
+	}
 
 	return (
 		<Layout>
@@ -30,7 +43,7 @@ const AmbulatoryCardAddPage: React.FC<Props> = (props) => {
 			</Toolbar>
 			<FormContainer>
 				<FormLayout>
-					<Form initialData={initialData} />
+					<Form onSubmit={handleSumbit} initialData={initialData} />
 				</FormLayout>
 			</FormContainer>
 		</Layout>

@@ -1,16 +1,12 @@
 import React, { PropsWithChildren } from 'react'
 import * as yup from 'yup'
 import { Form, Button, Row, Field, Column as Col, Input, Select } from 'core'
-import { createAmbulatoryCard } from 'api/ambulatory_card'
 import { useHistory } from 'react-router-dom'
-import {
-	ambulatoryCardGridRequestIDAtom,
-	useRefreshAmbulatoryCardGrid,
-} from 'module/ambulatory_card'
-import { useRecoilState } from 'recoil'
+import { AmbulatoryCardInputT } from 'type'
 
 type PropsT = PropsWithChildren<{
 	initialData: object
+	onSubmit: (data: AmbulatoryCardInputT) => Promise<void>
 }>
 
 const schema = yup.object().shape({
@@ -18,21 +14,12 @@ const schema = yup.object().shape({
 })
 
 const AmbulatoryCardAddPage: React.FC<PropsT> = (props) => {
-	const { initialData } = props
+	const { initialData, onSubmit } = props
 	const history = useHistory()
-	const refreshAmbulatoryCardGrid = useRefreshAmbulatoryCardGrid()
-
-	const handleSumbit = async (data: any) => {
-		const response = await createAmbulatoryCard(data)
-
-		refreshAmbulatoryCardGrid()
-
-		history.push('/ambulatory-card')
-	}
 
 	return (
 		<Form
-			onSubmit={handleSumbit}
+			onSubmit={onSubmit}
 			initialValues={initialData}
 			schema={schema}
 		>
@@ -75,7 +62,7 @@ const AmbulatoryCardAddPage: React.FC<PropsT> = (props) => {
 				</Col>
 			</Row>
 			<Row>
-				<Button type='submit'>Send</Button>
+				<Button type='submit'>Отправить</Button>
 			</Row>
 		</Form>
 	)
