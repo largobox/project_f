@@ -7,21 +7,21 @@ const Container = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	height: 100vh;
-	background-color: pink;
+	background-color: ${({ theme }) => theme.palette.secondary.light};
 `;
 
 const Item = styled.div`
-	background-color: lightcoral;
+	background-color: ${({ theme }) => theme.palette.secondary.main};
 	color: white;
 	margin-bottom: 12px;
 	height: 40px;
 	line-height: 40px;
 	text-align: center;
-	transition: .15s;
+	cursor: pointer;
+	transition: ${({ theme }) => theme.transition.default};
 
 	&:hover {
-		cursor: pointer;
-		background-color: indianred;
+		background-color: ${({ theme }) => theme.palette.secondary.dark};
 	}
 `;
 

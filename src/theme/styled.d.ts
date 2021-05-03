@@ -5,9 +5,13 @@ declare module 'styled-components' {
 		palette: {
 			primary: {
 				main: string
+				dark: string
+				light: string
 			},
 			secondary: {
 				main: string
+				dark: string
+				light: string
 			},
 			default: {
 				main: string
@@ -18,6 +22,10 @@ declare module 'styled-components' {
 			error: string
 		}
 		spacing: (value: number) => string,
+		borderRadius: string,
+		transition: {
+			default: string
+		}
 		zIndex: {
 			dropdown: number
 		}

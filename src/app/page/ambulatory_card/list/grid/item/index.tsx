@@ -1,30 +1,53 @@
-import React, { PropsWithChildren } from 'react';
-import { AmbulatoryCardT }  from 'type'
-import styled from 'styled-components';
+import React, { PropsWithChildren } from 'react'
+import { AmbulatoryCardT } from 'type'
+import styled from 'styled-components'
+import { EditIcon, RemoveIcon } from 'icons'
+import { Row, Column, Button, ButtonGroup } from 'core'
 
 const Container = styled.div`
-	padding: 6px;
-	margin-bottom: 6px;
-	background-color: darkgray;
-	color: white;
-	transition: .15s;
+	padding: ${({ theme }) => theme.spacing(1)};
+	margin-bottom: ${({ theme }) => theme.spacing(1)};
+	background-color: ${({ theme }) => theme.palette.paper};
+	transition: ${({ theme }) => theme.transition.default};
+	cursor: pointer;
 
 	&:hover {
-		cursor: pointer;
-		background-color: grey;
+		background-color: ${({ theme }) => theme.palette.default.light};
 	}
-`;
+`
 
-type Props = PropsWithChildren<{data: AmbulatoryCardT}>
+const ControlsContainer = styled.div`
+	display: flex;
+	flex-direction: row-reverse;
+`
+
+type Props = PropsWithChildren<{ data: AmbulatoryCardT }>
 
 const AmbulatoryCardItem: React.FC<Props> = (props) => {
-	const { data } = props;
+	const { data } = props
 
 	return (
 		<Container>
-			<span>{data.firstName}</span>
+			<Row>
+				<Column xs={6}>
+					<span>{data.firstName}</span>
+				</Column>
+
+				<Column xs={6}>
+					<ControlsContainer>
+						<ButtonGroup>
+							<Button color='secondary'>
+								<EditIcon />
+							</Button>
+							<Button color='secondary'>
+								<RemoveIcon />
+							</Button>
+						</ButtonGroup>
+					</ControlsContainer>
+				</Column>
+			</Row>
 		</Container>
 	)
 }
 
-export default AmbulatoryCardItem;
+export default AmbulatoryCardItem

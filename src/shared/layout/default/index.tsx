@@ -6,6 +6,8 @@ import Toolbar from './toolbar';
 type PropsT = PropsWithChildren<{}>;
 
 const Container = styled.div`
+	width: 1200px;
+
 	${Title} {
 		display: inline-block;
 		margin-right: ${props => props.theme.spacing(2)}

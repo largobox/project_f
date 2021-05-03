@@ -1,4 +1,5 @@
 export { default as Button } from './button'
+export { default as ButtonGroup } from './button_group'
 export { default as Column } from './column'
 export { default as Field } from './field'
 export { default as Form } from './form'

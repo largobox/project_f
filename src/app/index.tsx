@@ -7,13 +7,14 @@ import ServicePages from 'page/service'
 import Preloader from 'core/preloader'
 
 const Container = styled.div`
-	background-color: pink;
 	display: grid;
 	grid-template-columns: 200px 1fr;
 `
 
 const Content = styled.div`
-	background-color: lightblue;
+	background-color: ${({ theme }) => theme.palette.primary.light};
+	padding-left: ${({theme}) => theme.spacing(4)};
+	padding-right: ${({theme}) => theme.spacing(4)};
 `
 
 function App() {
