@@ -4,7 +4,7 @@ import AmbulatoryCardAddPage from 'module/ambulatory_card/page/add'
 import AmbulatoryCardEditPage from 'module/ambulatory_card/page/edit'
 import { Route, Switch } from 'react-router-dom'
 import { findAmbulatoryCard, findOneAmbulatoryCard } from 'api/ambulatory_card'
-import { selector, selectorFamily, atom, useRecoilState } from 'recoil'
+import { selector, selectorFamily, atom, atomFamily, useRecoilState } from 'recoil'
 
 function AmbulatoryCardModule() {
 	return (
@@ -22,6 +22,7 @@ function AmbulatoryCardModule() {
 	)
 }
 
+// Grid
 export const ambulatoryCardGridRequestIDAtom = atom({
 	key: 'ambulatoryCardGridRequestID',
 	default: 0,
@@ -45,9 +46,24 @@ export const ambulatoryCardGridItemsSelector = selector({
 	},
 })
 
+// Form
+export const ambulatoryCardEditFormDataRequestIDAtom = atom({
+	key: 'ambulatoryCardEditFormDataRequestID',
+	default: 0,
+})
+
+export const useRefreshAmbulatoryCardEditForm = () => {
+	const [requestID, setRequestID] = useRecoilState(
+		ambulatoryCardEditFormDataRequestIDAtom
+	)
+
+	return () => setRequestID(requestID + 1)
+}
+
 export const ambulatoryCardEditFormDataSelector = selectorFamily({
 	key: 'ambulatoryCardEditFormData',
-	get: (ambulatoryCardId: string) => async () => {
+	get: (ambulatoryCardId: string) => async ({ get }) => {
+		get(ambulatoryCardEditFormDataRequestIDAtom)
 		const ambulatoryCard = await findOneAmbulatoryCard(ambulatoryCardId)
 
 		return ambulatoryCard

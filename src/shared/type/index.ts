@@ -6,3 +6,8 @@ export type AmbulatoryCardT = {
 export type AmbulatoryCardInputT = {
 	firstName: string
 }
+
+export type GenderT = {
+	value: string
+	label: string
+}

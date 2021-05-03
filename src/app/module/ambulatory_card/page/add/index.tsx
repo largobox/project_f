@@ -20,7 +20,8 @@ const FormContainer = styled.div`
 `
 
 const initialData = {
-	firstName: 'Some name'
+	firstName: 'Some name',
+	surname: '',
 }
 
 const AmbulatoryCardAddPage: React.FC<Props> = (props) => {

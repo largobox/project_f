@@ -7,7 +7,7 @@
 			"shared/*": ["src/shared/*"],
 			"core/*": ["src/shared/component/*"],
 			"core": ["src/shared/component"],
-			"common/*": ["src/app/component/*"],
+			"common/*": ["src/app/common/*"],
 			"error/*": ["src/shared/error/*"],
 			"locale/*": ["src/shared/locale/*"],
 			"api/*": ["src/api/*"],

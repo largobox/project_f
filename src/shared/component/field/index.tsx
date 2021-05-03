@@ -32,11 +32,11 @@ const Field = (props: FieldPropsT) => {
 			<Label htmlFor={name}>{label}</Label>
 
 			{React.Children.map(children, (child) => {
-				const isInput = child.type === Input
+{/*				const isInput = child.type === Input
 				const isSelect = child.type === Select
-				const isControlledComponent = isInput || isSelect
+				const isControlledComponent = isInput || isSelect*/}
 
-				if (isControlledComponent && formContext) {
+				if (formContext) {
 					return (
 						<Controller
 							name={name}
@@ -45,6 +45,7 @@ const Field = (props: FieldPropsT) => {
 									React.cloneElement(
 										child,
 										{
+											name,
 											onChange: field.onChange,
 											value: field.value,
 										}

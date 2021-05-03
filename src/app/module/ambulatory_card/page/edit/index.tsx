@@ -11,7 +11,7 @@ import { Button, Typography } from 'core'
 import Form from 'module/ambulatory_card/component/form/default'
 import { ambulatoryCardEditFormDataSelector } from 'module/ambulatory_card'
 import { AmbulatoryCardInputT } from 'type'
-import { useRefreshAmbulatoryCardGrid } from 'module/ambulatory_card'
+import { useRefreshAmbulatoryCardGrid, useRefreshAmbulatoryCardEditForm } from 'module/ambulatory_card'
 import { updateAmbulatoryCard } from 'api/ambulatory_card'
 
 type Props = PropsWithChildren<{}>
@@ -26,11 +26,13 @@ const AmbulatoryCardAddPage: React.FC<Props> = (props) => {
 	const handleSaveClick = () => console.log('Save clicked')
 	const initialData = useRecoilValue(ambulatoryCardEditFormDataSelector(id))
 	const refreshAmbulatoryCardGrid = useRefreshAmbulatoryCardGrid()
+	const refreshAmbulatoryCardEditForm = useRefreshAmbulatoryCardEditForm()
 
 	const handleSumbit = async (data: AmbulatoryCardInputT) => {
 		await updateAmbulatoryCard(data)
 
 		refreshAmbulatoryCardGrid()
+		refreshAmbulatoryCardEditForm()
 
 		history.push('/ambulatory-card')
 	}

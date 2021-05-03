@@ -47,6 +47,11 @@ function initializeObjectStores(db: IDBDatabase) {
 		keyPath: 'id',
 		autoIncrement: true,
 	})
+
+	const genderStore = db.createObjectStore('genders', {keyPath: 'value'})
+
+	genderStore.add({value: 'male', label: 'мужской'})
+	genderStore.add({value: 'female', label: 'женский'})
 }
 
 export default promiseEstablishConnection

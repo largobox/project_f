@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react'
 import styled from 'styled-components'
-import Menu from 'common/navigation'
+import Menu from 'module/navigation'
 import { Route, Switch, Redirect } from 'react-router-dom'
 import AmbulatoryCardModule from 'module/ambulatory_card'
 import ServiceModule from 'module/service'
