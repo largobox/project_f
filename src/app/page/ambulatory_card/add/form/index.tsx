@@ -2,7 +2,12 @@ import React, { PropsWithChildren } from 'react'
 import * as yup from 'yup'
 import { Form, Button, Row, Field, Column as Col, Input, Select } from 'core'
 import { createAmbulatoryCard } from 'api/ambulatory_card'
-import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom'
+import {
+	ambulatoryCardGridRequestIDAtom,
+	useRefreshAmbulatoryCardGrid,
+} from 'page/ambulatory_card'
+import { useRecoilState } from 'recoil'
 
 type PropsT = PropsWithChildren<{}>
 
@@ -12,9 +17,12 @@ const schema = yup.object().shape({
 
 const AmbulatoryCardAddPage: React.FC<PropsT> = (props) => {
 	const history = useHistory()
+	const refreshAmbulatoryCardGrid = useRefreshAmbulatoryCardGrid()
 
 	const handleSumbit = async (data: any) => {
 		const response = await createAmbulatoryCard(data)
+
+		refreshAmbulatoryCardGrid()
 
 		history.push('/ambulatory-card')
 	}

@@ -7,7 +7,6 @@ import Title from 'layout/default/title'
 import Toolbar from 'layout/default/toolbar'
 import Button from 'core/button'
 import AmbulatoryCardGrid from './grid'
-import { findAmbulatoryCard } from 'api/ambulatory_card'
 import { ambulatoryCardGridItemsSelector } from 'page/ambulatory_card'
 
 type PropsType = PropsWithChildren<{}>
