@@ -7,6 +7,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 type PropsT = PropsWithChildren<{
 	onSubmit: (data: any) => void
 	initialValues: any
+	loaded: boolean
 	schema?: AnyObjectSchema
 	className?: string
 }>
@@ -19,8 +20,11 @@ const Form = (props: PropsT) => {
 		children,
 		onSubmit,
 		initialValues,
-		schema
+		schema,
+		loaded = true
 	} = props
+
+	if (!loaded) return null
 
 	const methods = useForm({
 		defaultValues: initialValues,

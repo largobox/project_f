@@ -11,7 +11,9 @@ type Props = PropsWithChildren<{
 
 const Grid: React.FC<Props> = (props) => {
 	const { data, Item } = props
-	const isEmpty = data.length === 0
+	const isEmpty = data?.length === 0
+
+	if (data === null) return null
 
 	return (
 		<Container>

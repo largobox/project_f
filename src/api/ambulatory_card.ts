@@ -1,4 +1,5 @@
 import PromiseDB from './connection'
+import { IndexDBError } from 'error'
 import { AmbulatoryCardT, AmbulatoryCardInputT } from 'type'
 
 export const createAmbulatoryCard = (data: AmbulatoryCardInputT) => {
@@ -37,15 +38,19 @@ export const findAmbulatoryCard = () => {
 	})
 }
 
-export const findOneAmbulatoryCard = (id: string) => {
+export const findOneAmbulatoryCard = (params: any) => {
 	return new Promise<AmbulatoryCardT[]>(async (resolve, reject) => {
-		const db = await PromiseDB
-		const transaction = db.transaction('ambulatoryCards')
-		const ambulatoryCards = transaction.objectStore('ambulatoryCards')
-		const request = ambulatoryCards.get(Number(id))
+		try {
+			const db = await PromiseDB
+			const transaction = db.transaction('ambulatoryCards')
+			const ambulatoryCards = transaction.objectStore('ambulatoryCards')
+			const request = ambulatoryCards.get(Number(params.id))
 
-		request.onsuccess = () => resolve(request.result)
-		request.onerror = () => reject(null)
+			request.onsuccess = () => resolve(request.result)
+			request.onerror = (ev) => reject(ev)
+		} catch (err) {
+			handleError('findOneAmbulatoryCard', err)
+		}
 	})
 }
 
@@ -59,4 +64,10 @@ export const deleteAmbulatoryCard = (id: string) => {
 		request.onsuccess = () => resolve(request.result)
 		request.onerror = () => reject(null)
 	})
+}
+
+function handleError(methodName: string, err: Error) {
+	const error = new IndexDBError('findOneAmbulatoryCard', err)
+
+	console.error(error)
 }

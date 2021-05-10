@@ -4,3 +4,10 @@ export class UnhandledVariantError extends Error {
         this.name = "UnhandledVariantError";
     }
 }
+
+export class IndexDBError extends Error {
+    constructor(method: string, error: Error) {
+        super(`Method "${method}". Message: ${error.message}`);
+        this.name = "IndexDBError";
+    }
+}

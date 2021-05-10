@@ -13,8 +13,8 @@ const Container = styled.div`
 
 const Content = styled.div`
 	background-color: ${({ theme }) => theme.palette.primary.light};
-	padding-left: ${({theme}) => theme.spacing(4)};
-	padding-right: ${({theme}) => theme.spacing(4)};
+	padding-left: ${({ theme }) => theme.spacing(4)};
+	padding-right: ${({ theme }) => theme.spacing(4)};
 `
 
 function App() {

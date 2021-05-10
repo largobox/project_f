@@ -1,7 +1,6 @@
 import React, { PropsWithChildren } from 'react'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
-import { useRecoilState } from 'recoil'
 
 import Layout from 'layout/default'
 import Title from 'layout/default/title'
@@ -10,7 +9,6 @@ import FormLayout from 'layout/form'
 import { Button, Typography } from 'core'
 import Form from 'module/ambulatory_card/component/form/default'
 import { createAmbulatoryCard } from 'api/ambulatory_card'
-import { useRefreshAmbulatoryCardGrid } from 'module/ambulatory_card'
 import { AmbulatoryCardInputT } from 'type'
 
 type Props = PropsWithChildren<{}>
@@ -27,12 +25,9 @@ const initialData = {
 const AmbulatoryCardAddPage: React.FC<Props> = (props) => {
 	const history = useHistory()
 	const handleSaveClick = () => console.log('Save clicked')
-	const refreshAmbulatoryCardGrid = useRefreshAmbulatoryCardGrid()
 
-	const handleSumbit = async (data: AmbulatoryCardInputT) => {
-		await createAmbulatoryCard(data)
-
-		refreshAmbulatoryCardGrid()
+	const handleSumbit = async (values: AmbulatoryCardInputT) => {
+		await createAmbulatoryCard(values)
 
 		history.push('/ambulatory-card')
 	}

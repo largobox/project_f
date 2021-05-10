@@ -9,11 +9,14 @@
 			"core": ["src/shared/component"],
 			"common/*": ["src/app/common/*"],
 			"error/*": ["src/shared/error/*"],
+			"error": ["src/shared/error"],
 			"locale/*": ["src/shared/locale/*"],
 			"api/*": ["src/api/*"],
 			"type/*": ["src/shared/type/*"],
 			"type": ["src/shared/type"],
-			"icons": ["src/shared/component/icons"]
+			"icons": ["src/shared/component/icons"],
+			"hook/*": ["src/app/common/hook/*"],
+			"hook": ["src/app/common/hook"]
 		},
 		"outDir": "./dist/",
 		"noImplicitAny": true,

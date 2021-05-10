@@ -10,7 +10,7 @@ const promiseEstablishConnection = new Promise<IDBDatabase>((resolve, reject) =>
 	DBOpenRequest.onsuccess = function (ev: any) {
 		console.log('Сonnection to database: Success')
 
-		let db: IDBDatabase = DBOpenRequest.result
+		let db = DBOpenRequest.result
 
 		db.onerror = function (ev: any) {
 			console.error(
@@ -24,7 +24,7 @@ const promiseEstablishConnection = new Promise<IDBDatabase>((resolve, reject) =>
 			alert('База данных устарела, пожалуста, перезагрузите страницу.')
 		}
 
-		resolve(DBOpenRequest.result)
+		resolve(db)
 	}
 
 	DBOpenRequest.onerror = function (ev: any) {

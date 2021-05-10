@@ -16,6 +16,7 @@ import GenderSelect from 'common/select/gender_select'
 
 type PropsT = PropsWithChildren<{
 	initialData: object
+	loaded?: boolean
 	onSubmit: (data: AmbulatoryCardInputT) => Promise<void>
 }>
 
@@ -24,11 +25,11 @@ const schema = yup.object().shape({
 })
 
 const AmbulatoryCardAddPage: React.FC<PropsT> = (props) => {
-	const { initialData, onSubmit } = props
+	const { initialData, onSubmit, loaded } = props
 	const history = useHistory()
 
 	return (
-		<Form onSubmit={onSubmit} initialValues={initialData} schema={schema}>
+		<Form onSubmit={onSubmit} initialValues={initialData} schema={schema} loaded={loaded}>
 			<Row>
 				<Col xs={12}>
 					<Field label='имя' name='firstName'>

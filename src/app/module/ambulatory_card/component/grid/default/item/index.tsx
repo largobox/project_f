@@ -5,7 +5,6 @@ import styled from 'styled-components'
 import { EditIcon, RemoveIcon } from 'icons'
 import { Row, Column as Col, Button, ButtonGroup } from 'core'
 import { deleteAmbulatoryCard } from 'api/ambulatory_card'
-import { useRefreshAmbulatoryCardGrid } from 'module/ambulatory_card'
 
 const Container = styled.div`
 	padding: ${({ theme }) => theme.spacing(1)};
@@ -29,7 +28,6 @@ type Props = PropsWithChildren<{ data: AmbulatoryCardT }>
 const AmbulatoryCardItem: React.FC<Props> = (props) => {
 	const { data: { id, firstName } } = props
 	const history = useHistory()
-	const refreshAmbulatoryCardGrid = useRefreshAmbulatoryCardGrid()
 
 	const handleEditClick = (id: string) => () => {
 		history.push(`/ambulatory-card/${id}/edit`)
@@ -37,8 +35,6 @@ const AmbulatoryCardItem: React.FC<Props> = (props) => {
 
 	const handleRemoveClick = (id: string) => async () => {
 		await deleteAmbulatoryCard(id)
-
-		refreshAmbulatoryCardGrid()
 	}
 
 	return (
