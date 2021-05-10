@@ -14,6 +14,8 @@ function useQuery(apiFunc: QueryApiFunc, options: QueryOptions = {}) {
 	})
 
 	useEffect(() => {
+		if (queryState.loaded) return
+
 		;(async () => {
 			try {
 				const result = await apiFunc.call(null, params)
@@ -26,9 +28,20 @@ function useQuery(apiFunc: QueryApiFunc, options: QueryOptions = {}) {
 				console.error(err)
 			}
 		})()
-	}, [])
+	}, [queryState.loaded])
 
-	return { data: queryState.data, loaded: queryState.loaded }
+	const refresh = () => {
+		setQueryState({
+			data: null,
+			loaded: false
+		})
+	}
+
+	return {
+		data: queryState.data,
+		loaded: queryState.loaded,
+		refresh,
+	}
 }
 
 export default useQuery

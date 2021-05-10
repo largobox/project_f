@@ -23,10 +23,13 @@ const ControlsContainer = styled.div`
 	flex-direction: row-reverse;
 `
 
-type Props = PropsWithChildren<{ data: AmbulatoryCardT }>
+type Props = PropsWithChildren<{
+	data: AmbulatoryCardT
+	refreshGrid: () => void
+}>
 
 const AmbulatoryCardItem: React.FC<Props> = (props) => {
-	const { data: { id, firstName } } = props
+	const { data: { id, firstName }, refreshGrid } = props
 	const history = useHistory()
 
 	const handleEditClick = (id: string) => () => {
@@ -35,6 +38,7 @@ const AmbulatoryCardItem: React.FC<Props> = (props) => {
 
 	const handleRemoveClick = (id: string) => async () => {
 		await deleteAmbulatoryCard(id)
+		refreshGrid()
 	}
 
 	return (
