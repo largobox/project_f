@@ -12,7 +12,7 @@ import {
 } from 'core'
 import { useHistory } from 'react-router-dom'
 import { AmbulatoryCardInputT } from 'type'
-import GenderSelect from 'common/select/gender_select'
+import GenderSelect from 'common/component/select/gender_select'
 
 type PropsT = PropsWithChildren<{
 	initialData: object

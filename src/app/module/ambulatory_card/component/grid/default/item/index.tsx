@@ -2,7 +2,7 @@ import React, { PropsWithChildren } from 'react'
 import { useHistory } from 'react-router-dom'
 import { AmbulatoryCardT } from 'type'
 import styled from 'styled-components'
-import { EditIcon, RemoveIcon } from 'icons'
+import { EditIcon, RemoveIcon } from 'icon'
 import { Row, Column as Col, Button, ButtonGroup } from 'core'
 import { deleteAmbulatoryCard } from 'api/ambulatory_card'
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaPen, FaTrash } from 'react-icons/fa'
+import { FaPen, FaTrash, FaChevronLeft, FaChevronRight  } from 'react-icons/fa'
 import { IconType } from 'react-icons'
 
 type IconPropsType = {
@@ -23,3 +23,5 @@ const iconWrapper = (Icon: IconType) => (props: IconPropsType) => {
 
 export const EditIcon = iconWrapper(FaPen)
 export const RemoveIcon = iconWrapper(FaTrash)
+export const ChevronLeftIcon = iconWrapper(FaChevronLeft)
+export const ChevronRightIcon = iconWrapper(FaChevronRight)

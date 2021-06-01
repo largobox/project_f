@@ -14,7 +14,7 @@
 			"api/*": ["src/api/*"],
 			"type/*": ["src/shared/type/*"],
 			"type": ["src/shared/type"],
-			"icons": ["src/shared/component/icons"],
+			"icon": ["src/shared/component/icon"],
 			"hook/*": ["src/app/common/hook/*"],
 			"hook": ["src/app/common/hook"]
 		},
