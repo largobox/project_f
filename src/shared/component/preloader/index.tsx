@@ -12,8 +12,7 @@ const Container = styled.div`
 const Spinner = styled.svg`
   animation: rotate 2s linear infinite;
   margin: -25px 0 0 -25px;
-  width: 50px;
-  height: 50px;
+  height: 100%;
   
   & .path {
     stroke: ${({ theme }) => theme.palette.default.main};
@@ -47,20 +46,24 @@ type PreloaderPropsT = { className?: string }
 const Preloader = (props: PreloaderPropsT) => {
 	const { className } = props
 
-	return (
-		<Container>
-			<Spinner viewBox='0 0 50 50'>
-				<circle
-					className='path'
-					cx='25'
-					cy='25'
-					r='20'
-					fill='none'
-					strokeWidth='4'
-				/>
-			</Spinner>
-		</Container>
-	)
+  return (
+    <Container>Loading...</Container>
+  )
+
+	// return (
+	// 	<Container>
+	// 		<Spinner viewBox='0 0 50 50'>
+	// 			<circle
+	// 				className='path'
+	// 				cx='25'
+	// 				cy='25'
+	// 				r='20'
+	// 				fill='none'
+	// 				strokeWidth='4'
+	// 			/>
+	// 		</Spinner>
+	// 	</Container>
+	// )
 }
 
 export default styled(Preloader)``

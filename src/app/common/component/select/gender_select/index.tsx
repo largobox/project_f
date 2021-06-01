@@ -2,7 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { Select } from 'core'
-import { useOption } from './hook'
+import { useQuery } from 'hook'
+import { findGender } from 'api/gender'
 
 const Container = styled.div``
 
@@ -15,17 +16,18 @@ type GenderSelectPropsT = {
 
 const GenderSelect = (props: GenderSelectPropsT) => {
 	const { className, name, onChange, value } = props
-	const options = useOption()
+	const { data, loaded } = useQuery(findGender)
 
 	return (
 		<Select
+			loaded={loaded}
 			onChange={onChange}
 			value={value}
 			placeholder='выберите пол'
 			name={name}
 			labelField='label'
 			valueField='value'
-			options={options}
+			options={data}
 		/>
 	)
 }

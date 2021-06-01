@@ -2,6 +2,7 @@ import React, { ChangeEvent, useRef, useState } from 'react'
 import styled from 'styled-components'
 import RCSelect, { Option } from 'rc-select'
 import { FaChevronDown as InputIcon } from 'react-icons/fa'
+import Preloader from 'shared/component/preloader'
 
 const Container = styled.div`
 	.rc-select {
@@ -94,6 +95,7 @@ type SelectPropsT = {
 	labelField?: string
 	valueField?: string
 	options: object[]
+	loaded: boolean
 }
 
 const Select = (props: SelectPropsT) => {
@@ -105,6 +107,7 @@ const Select = (props: SelectPropsT) => {
 		labelField = 'value',
 		valueField = 'key',
 		value: initialValue,
+		loaded = false
 	} = props
 
 	const containerRef = useRef()
@@ -113,6 +116,10 @@ const Select = (props: SelectPropsT) => {
 	const handleChange = (value: string): void => {
 		setValue(value)
 		onChange && onChange(value)
+	}
+
+	if (!loaded) {
+		return <Preloader />
 	}
 
 	return (

@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
-import { RecoilRoot } from 'recoil'
 import { ThemeProvider } from 'styled-components'
 
 import 'normalize.css'
@@ -13,11 +12,9 @@ import ErrorBoundary from 'error/error_boundary'
 ReactDOM.render(
 	<Router>
 		<ThemeProvider theme={theme}>
-			<RecoilRoot>
-				<ErrorBoundary>
-					<App />
-				</ErrorBoundary>
-			</RecoilRoot>
+			<ErrorBoundary>
+				<App />
+			</ErrorBoundary>
 		</ThemeProvider>
 	</Router>,
 	document.getElementById('root')

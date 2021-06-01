@@ -1,7 +1,6 @@
 import React, { PropsWithChildren } from 'react'
 import styled from 'styled-components'
 import { useHistory, useParams } from 'react-router-dom'
-import { useRecoilValue } from 'recoil'
 
 import Layout from 'layout/default'
 import Title from 'layout/default/title'
