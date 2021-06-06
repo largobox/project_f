@@ -29,7 +29,12 @@ type Props = {
 
 const Pagination: React.FC<Props> = (props) => {
 	const { page, perPage, count, onChange } = props
-	const pageNumberRange = [1, 2, 3, 4, 5, 6]
+	const pageCount = Math.ceil(count / perPage)
+	const pageNumberRange =  []
+
+	for (let i = 1; i <= pageCount; i++) {
+		pageNumberRange.push(i)
+	}
 
 	const handleToLeftClick = () => {}
 	const handleToRightClick = () => {}

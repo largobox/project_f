@@ -1,8 +1,6 @@
-import React, { PropsWithChildren } from 'react'
-import Grid from 'core/grid'
+import React from 'react'
+import { Grid } from 'core'
 import Item from './item'
-import { AmbulatoryCardT } from 'type'
-import { useQuery } from 'hook'
 import { findAmbulatoryCard } from 'api/ambulatory_card'
 
 const headers = [
@@ -19,13 +17,12 @@ const headers = [
 ]
 
 const AmbulatoryCardGrid: React.FC = () => {
-	const { data, refresh } = useQuery(findAmbulatoryCard)
-	const itemProps = {
-		refreshGrid: refresh,
-	}
-
 	return (
-		<Grid data={data} Item={Item} itemProps={itemProps} headers={headers} />
+		<Grid
+			getDataFunc={findAmbulatoryCard}
+			Item={Item}
+			headers={headers}
+		/>
 	)
 }
 

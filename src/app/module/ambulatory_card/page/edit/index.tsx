@@ -24,7 +24,7 @@ const FormContainer = styled.div`
 const AmbulatoryCardAddPage: React.FC<Props> = (props) => {
 	const history = useHistory()
 	const { id } = useParams<{ id: string }>()
-	const { data, loaded } = useQuery(findOneAmbulatoryCard, { params: { id } })
+	const { response, loaded } = useQuery(findOneAmbulatoryCard, { params: { id } })
 
 	const handleSumbit = async (values: AmbulatoryCardInputT) => {
 		await updateAmbulatoryCard(values)
@@ -48,7 +48,7 @@ const AmbulatoryCardAddPage: React.FC<Props> = (props) => {
 				<FormLayout>
 					<Form
 						onSubmit={handleSumbit}
-						initialData={data}
+						initialData={response.data}
 						loaded={loaded}
 					/>
 				</FormLayout>

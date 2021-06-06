@@ -1,28 +1,31 @@
 import React, { useState, useEffect } from 'react'
-
-type QueryApiFunc = (args: any) => Promise<any>
+import { UseQueryApiFuncT } from 'type'
 
 type QueryOptions = {
 	params?: object
 }
-
-function useQuery(apiFunc: QueryApiFunc, options: QueryOptions = {}) {
+ 
+function useQuery(apiFunc: UseQueryApiFuncT, options: QueryOptions = {}) {
 	const { params } = options
+
 	const [queryState, setQueryState] = useState({
-		data: null,
+		response: null,
 		loaded: false,
+		params
 	})
+
 
 	useEffect(() => {
 		if (queryState.loaded) return
 
 		;(async () => {
 			try {
-				const result = await apiFunc.call(null, params)
+				const response = await apiFunc.call(null, queryState.params)
 
 				setQueryState({
-					data: result,
+					response,
 					loaded: true,
+					params: queryState.params
 				})
 			} catch (err) {
 				console.error(err)
@@ -30,15 +33,16 @@ function useQuery(apiFunc: QueryApiFunc, options: QueryOptions = {}) {
 		})()
 	}, [queryState.loaded])
 
-	const refresh = () => {
+	const refresh = (params = {}) => {
 		setQueryState({
-			data: null,
-			loaded: false
+			response: null,
+			loaded: false,
+			params
 		})
 	}
 
 	return {
-		data: queryState.data,
+		response: queryState.response,
 		loaded: queryState.loaded,
 		refresh,
 	}

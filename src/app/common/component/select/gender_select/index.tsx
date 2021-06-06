@@ -16,7 +16,7 @@ type GenderSelectPropsT = {
 
 const GenderSelect = (props: GenderSelectPropsT) => {
 	const { className, name, onChange, value } = props
-	const { data, loaded } = useQuery(findGender)
+	const { response, loaded } = useQuery(findGender)
 
 	return (
 		<Select
@@ -27,7 +27,7 @@ const GenderSelect = (props: GenderSelectPropsT) => {
 			name={name}
 			labelField='label'
 			valueField='value'
-			options={data}
+			options={response.data}
 		/>
 	)
 }

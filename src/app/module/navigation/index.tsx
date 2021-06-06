@@ -38,7 +38,6 @@ const items = [
 
 function Menu() {
 	const history = useHistory();
-	console.log('Menu. Must render only: 1');
 
 	return (
 		<Container>
